@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-
+import { StyleSheet, View, Text, FlatList } from "react-native";
+// Importing Components
+import Header from "./components/header";
+import TodoItem from "./components/TodoItem";
 
 export default function App() {
 
@@ -14,14 +16,14 @@ export default function App() {
   return (
 
         <View style={styles.container} >
-          {/* Header */}
+          <Header />
           <View style={styles.content}>
             {/* To do form */}
             <View style={styles.list} >
               <FlatList 
                 data={todo}
                 renderItem={({ item }) => (
-                  <Text> {item.text} </Text>
+                  <TodoItem item={item} />
                 )}
               />
             </View>
@@ -42,6 +44,9 @@ const styles = StyleSheet.create({
   },
   list: {
     marginTop: 20,
+  },
+  todos: {
+    
   }
 
 });
