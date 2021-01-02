@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, TouchableOpacity} from "react-native";
 
 const TodoItem = (props) => {
     return (
-       <TouchableOpacity>
+       <TouchableOpacity onPress={() => props.pressHandle(props.item.key)}  >
            <Text style={styles.item} > {props.item.text} </Text>
        </TouchableOpacity>
     )
@@ -14,8 +14,9 @@ const styles = StyleSheet.create({
         padding: 16,
         marginTop: 16,
         borderColor: "#bbb",
+        borderWidth: 1,
         borderStyle: "dashed",
-        borderRadius: 10
+        borderRadius: 20
     }
 })
 

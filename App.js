@@ -13,6 +13,13 @@ export default function App() {
     {text: "work harder", key: 3}
   ]);
 
+  const pressHandler = (key) => {
+    console.log("The press handle function is running");
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.key != key);
+    })
+  }
+
   return (
 
         <View style={styles.container} >
@@ -23,7 +30,7 @@ export default function App() {
               <FlatList 
                 data={todo}
                 renderItem={({ item }) => (
-                  <TodoItem item={item} />
+                  <TodoItem pressHandle={pressHandler} item={item} />
                 )}
               />
             </View>
