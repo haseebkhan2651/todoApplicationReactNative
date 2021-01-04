@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import { StyleSheet, View, Text, FlatList, Alert} from "react-native";
 // Importing Components
 import Header from "./components/header";
 import TodoItem from "./components/TodoItem";
@@ -22,9 +22,16 @@ export default function App() {
   }
 
   const submitHandler = (newState) => {
-    setTodos((prevTodos) => {
-      return [...prevTodos, {text: newState, key:Math.random().toString() }]
-    });
+    if(newState.length > 3) {
+      setTodos((prevTodos) => {
+        return [...prevTodos, {text: newState, key:Math.random().toString() }]
+      }); 
+    } else {
+        Alert.alert("There was an error", "You need input something more than 3 characters", [
+          {text: "Understood", onPress: () => console.log("Alert closed")}
+        ]);
+    }
+
   }
 
   return (
